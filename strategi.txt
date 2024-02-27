@@ -1,5 +1,0 @@
-https://github.com/YudhaKautsar/auth-api/tree/masih-error/src
-https://github.com/rikotaufix/forum-api/tree/feature-say-hello-world
-https://github.com/dedelukman/forumapi_dicoding
-https://github.com/WannBae/forum_api
-https://github.com/YudhaKautsar/forum-api-starter-projec
