@@ -89,7 +89,7 @@ const createServer = async (container) => {
         message: 'terjadi kegagalan pada server kami',
       });
       newResponse.code(500);
-      console.log(response);
+      // console.log(response);
       return newResponse;
     }
 

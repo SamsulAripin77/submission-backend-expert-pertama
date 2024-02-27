@@ -63,7 +63,7 @@ describe('UserRepositoryPostgres', () => {
       // Action & Assert
       await expect(threadRepositoryPostgres. getDetailThread('thread-111'))
         .rejects
-        .toThrowError(InvariantError);
+        .toThrowError(NotFoundError);
     });
 
     it('should return thread id correctly', async () => {
