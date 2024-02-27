@@ -176,48 +176,7 @@ describe('/threads endpoint', () => {
   });
 
   describe('when GET /threads/{threadsId}', () => {
-    // it('should response 404 if thread not found', async () => {
-    //   const authPayload = {
-    //     username: 'user23432432',
-    //     password: 'secret'
-    //   }
-
-    //   const server = await createServer(container)
-
-    //   await server.inject({
-    //     method: 'POST',
-    //     url: '/users',
-    //     payload: {
-    //       username: 'user23432432',
-    //       password: 'secret',
-    //       fullname: 'Dicoding Indonesia'
-    //     }
-    //   })
-
-    //   const auth = await server.inject({
-    //     method: 'POST',
-    //     url: '/authentications',
-    //     payload: authPayload
-    //   })
-
-    //   const responseAuth = JSON.parse(auth.payload)
-
-    //   // Action
-    //   const response = await server.inject({
-    //     method: 'GET',
-    //     url: '/threads/xxx',
-    //     headers: {
-    //       Authorization: `Bearer ${responseAuth.data.accessToken}`
-    //     }
-    //   })
-
-    //   const responseJson = JSON.parse(response.payload)
-    //   expect(response.statusCode).toEqual(404)
-    //   expect(responseJson.status).toEqual('fail')
-    //   expect(responseJson.message).toEqual('thread tidak ditemukan')
-    // })
-
-    it('should response 200 and return detail thread', async () => {
+    it('should response 404 if thread not found', async () => {
       const authPayload = {
         username: 'user23432432',
         password: 'secret'
@@ -230,6 +189,48 @@ describe('/threads endpoint', () => {
         url: '/users',
         payload: {
           username: 'user23432432',
+          password: 'secret',
+          fullname: 'Dicoding Indonesia'
+        }
+      })
+
+      const auth = await server.inject({
+        method: 'POST',
+        url: '/authentications',
+        payload: authPayload
+      })
+
+      const responseAuth = JSON.parse(auth.payload)
+
+      // Action
+      const response = await server.inject({
+        method: 'GET',
+        url: '/threads/xxx',
+        headers: {
+          Authorization: `Bearer ${responseAuth.data.accessToken}`
+        }
+      })
+      
+      const responseJson = JSON.parse(response.payload)
+      console.log(responseJson)
+      expect(response.statusCode).toEqual(400)
+      expect(responseJson.status).toEqual('fail')
+      expect(responseJson.message).toEqual('thread tidak ditemukan')
+    })
+
+    it('should response 200 and return detail thread', async () => {
+      const authPayload = {
+        username: 'userA',
+        password: 'secret'
+      }
+
+      const server = await createServer(container)
+
+      await server.inject({
+        method: 'POST',
+        url: '/users',
+        payload: {
+          username: 'userA',
           password: 'secret',
           fullname: 'Dicoding Indonesia'
         }
@@ -256,7 +257,6 @@ describe('/threads endpoint', () => {
       })
 
       const responseThread = JSON.parse(thread.payload)
-      console.log(responseThread);
 
       // Action
       const response = await server.inject({
@@ -269,10 +269,9 @@ describe('/threads endpoint', () => {
 
       
       const responseJson = JSON.parse(response.payload)
-      console.log(responseJson);
       expect(response.statusCode).toEqual(200)
-      // expect(responseJson.status).toEqual('success')
-      // expect(responseJson.data.thread.comments).toBeDefined()
+      expect(responseJson.status).toEqual('success')
+      expect(responseJson.data.thread.comments).toBeDefined()
     })
   })
 });

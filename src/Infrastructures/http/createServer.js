@@ -72,7 +72,8 @@ const createServer = async (container) => {
           message: translatedError.message,
         });
         newResponse.code(translatedError.statusCode);
-        // console.log(translatedError.message);
+        // console.log('client erorr');
+        // console.log(translatedError);
 
         return newResponse;
       }
@@ -88,7 +89,7 @@ const createServer = async (container) => {
         message: 'terjadi kegagalan pada server kami',
       });
       newResponse.code(500);
-      console.log(response.message);
+      console.log(response);
       return newResponse;
     }
 
