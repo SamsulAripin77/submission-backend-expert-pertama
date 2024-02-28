@@ -41,8 +41,7 @@ describe('/threads endpoint', () => {
       })
 
       const responseAuth = JSON.parse(auth.payload);
-      // eslint-disable-next-line no-undef
-
+      // console.log(responseAuth);
       // // Action
       const response = await server.inject({
         method: 'POST',
@@ -55,8 +54,7 @@ describe('/threads endpoint', () => {
           Authorization: `Bearer ${responseAuth.data.accessToken}`
         }
       })
-
-    
+      
       // // Assert
       const responseJson = JSON.parse(response.payload);
       expect(response.statusCode).toEqual(201);

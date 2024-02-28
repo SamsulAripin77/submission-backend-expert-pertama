@@ -11,9 +11,8 @@ class ThreadRepositoryPostgres extends ThreadRepository {
   }
 
   async addThread(threadCreate) {
-    const { title, body } = threadCreate;
+    const { title, body, owner } = threadCreate;
     const id = `thread-${this._idGenerator()}`;
-    const owner = 'user-123';
 
     const query = {
       text: 'INSERT INTO threads VALUES($1, $2, $3, $4) RETURNING id, title, body, owner',
