@@ -10,12 +10,11 @@ describe('GetThreadUseCase', () => {
 
     const useCaseThread = {
       id: useCasePayload.threadId,
-      title: 'sebuah title thread',
-      body: 'sebuah body thread',
-      username: 'dicoding',
-      date: '2023-03-02T14:51:45.880Z'
+      body: "Sebuah Body",
+      owner: "user-wD9BOwtpHtdIW0jPjgRmp",
+      title: "Sebuah Judul",
+      username: "samsul",
     }
-
     const useCaseComment = [
       {
         id: 'comment-123',
